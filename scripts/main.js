@@ -26,8 +26,23 @@ window.addEventListener('load',function(){
     //get  areference to task-list element
     const TaskList = document.getElementById('task-list');
     TaskList.addEventListener('click',changeTaskStatus);
+    
+    const Button = document.getElementById('remove');
+    Button.addEventListener('click',removeDone);
 });
-
+function removeDone(){
+    let count = TaskArray.length-1;
+    for(let i=count; i>=0; i--){
+        let item = TaskArray[i];
+        if(item.status ==1){
+            //splice remove items from array
+            TaskArray.splice(i,1);
+            saveTasks();
+            renderTaskList();
+        }
+        
+    }
+}
 
 
 //define onSubmit
@@ -75,6 +90,7 @@ function onSubmit(event){
           let taskobj = TaskArray[i];
           createNewTask(taskobj);
       }
+      toggleShowButton();
   }
   
   //will see the event from the parent instead of the item on which the event is occuring 
@@ -129,5 +145,26 @@ function loadTasks(){
       //TaskArray = jsondata;
        //renderTaskList();
       //}
+    }
+}
+//to show and hide the button 
+function toggleShowButton(){
+    //let is a construct in java script let is more localised
+    let show = false;
+    let count = TaskArray.length;
+    //loop through the array to find items with status=1
+    for(let i=0; i<count; i++){
+       let item = TaskArray[i];
+       if(item.status == 1){
+           show = true;
+       }
+    }
+    //to hide the button set display=none but will not a fading effect 
+    //fhdhj
+    if(show == true){
+        document.getElementById('remove').setAttribute('class','show');
+    }
+    else{
+        document.getElementById('remove').removeAttribute('class');
     }
 }

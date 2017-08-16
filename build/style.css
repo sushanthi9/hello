@@ -16,11 +16,25 @@ header {
   height: 50px;
   background-color: #2814f6;
   color: #c6c0fd;
+  display: flex;
+  justify-content: space-between;
 }
 header h1 {
   margin: 0;
   padding: 0;
   text-align: center;
+}
+header #remove {
+  border: 1px solid transparent;
+  background: transparent;
+  max-width: 60px;
+  opacity: 0;
+}
+header #remove img {
+  max-width: 100%;
+}
+header #remove.show {
+  opacity: 1;
 }
 .container {
   flex: 1 0 auto;
