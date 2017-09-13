@@ -4,14 +4,30 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
     <title>To Do List</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
+    <!-- Initialize Firebase-->
+    <script>
+      var config = {
+        apiKey: "AIzaSyCvSW47mnbE3tWFVqpkv8L087LLNXMmMsA",
+        authDomain: "todolistapp-784de.firebaseapp.com",
+        databaseURL: "https://todolistapp-784de.firebaseio.com",
+        projectId: "todolistapp-784de",
+        storageBucket: "todolistapp-784de.appspot.com",
+        messagingSenderId: "1010011115832"
+      };
+      firebase.initializeApp(config);
+    </script>
   </head>
   <body>
     <div class="appview">
       <header>
+        <h2 id="username"> </h2>
         <h1>To Do List</h1>
         <button id="remove">
           <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEMAAABDCAMAAADwFEhBAAAAq1BMVEUAAADxxA/xxA/xxA/xxA/xxA/xxA/xxA/xxA/xxA/xxA/xxA/xxA/xxA/xxA/xxA/xxA/xxA/xxA/xxA/xxA/xxA/xxA/xxA/xxA/xxA/xxA/xxA/xxA/xxA/xxA/xxA/xxA/xxA/xxA/xxA/xxA/xxA/xxA/xxA/xxA/xxA/xxA/xxA/xxA/xxA/xxA/xxA/xxA/xxA/xxA/xxA/xxA/xxA/xxA/xxA/xxA8KWpASAAAAOHRSTlMAAQMEBQYICgsVFxgdHh8iLjEyMzQ1Njc4OTo7RE5WX2NscXd8homVl6OqvsDFx8jKzM7Z3ODx+eRucqoAAAERSURBVFjD7czJVgJBEETRbG1UnADFWUQRHHAeif//Mhd6hKKzujIrtv22EeeKNDWFdS8v2pzQegSAK4p4BwDgOp8o/wgCmRPZyCKRiYREFlK+YakRTwAdnsCYJ3DnIl41AkOe+F6jidk2T+wEr4IlWpMZHnbjxEua2PgCAJzxBHDKE8AJTwDHPFFFymc3ARwFxKqBWPmo7IdOQgbK48BHyK326bsIuVFf+7/Ek4mQvnrDnoMQudeRnoOQYqoj53YijjgIFxIjHEicMCN1hBGpJ0xIijAgaSKJWIgEYiNqEStRg9iJKOIhIoiPUBEvoSB+ooLkEEtIHhEgucQCkk/8IwwhUkwAfG4J13pns5CmJr4fUM8jHNgJkTEAAAAASUVORK5CYII=">
+          <!--log out button-->
         </button>
+        <a href="#" id="logout">Log Out</a>
       </header>
       <main class="container">
         <ul id="task-list">
@@ -26,6 +42,43 @@
         </form>
       </footer>
       <script src="main.js"></script>
+      <!--include templates-->
+      <template id="signup-template">
+        <div class="overlay" id="signup-box">
+          <form class="authform" id="signup-form">
+            <h2>Sign up for an account</h2>
+            <label>Username</label>
+            <input type="text" name="username" id="username" placeholder="hi">
+            <label>Email</label>
+            <input type="email" name="email" id="email" placeholder="hi">
+            <label>Password</label>
+            <input type="password" name="password" id="password" placeholder="minimum 6 chars">
+            <div class="button-container">
+              <button class="auth-button" type="submit">Sign Up</button>
+            </div>
+            <p>already have an account?
+              <a href="#" id="signin-link">sign in</a>
+            </p>
+          </form>
+        </div>
+      </template>
+      <template id="signin-template">
+        <div class="overlay" id="signin-box">
+          <form class="authform" id="signin-form">
+            <h2>Sign in to your account</h2>
+            <label>Email</label>
+            <input type="email" name="email" id="email" placeholder="hi">
+            <label>Password</label>
+            <input type="password" name="password" id="password" placeholder="minimum 6 chars">
+            <div class="button-container">
+              <button class="auth-button" type="submit">Sign In</button>
+            </div>
+            <p>don't have an account?
+              <a href="#" id="signup-link">sign up</a>
+            </p>
+          </form>
+        </div>
+      </template>
     </div>
   </body>
 </html>
