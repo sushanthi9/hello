@@ -54,10 +54,19 @@ gulp.task('browsersync',function() {
     });
 });
 
+//copy changes to build to docs folder
+gulp.task('publishchanges',function(){
+    
+    //store java script files in scripts folder
+    return gulp.src('build/*.*')
+    .pipe(gulp.dest('docs'))
+    });
+
 //create task for watch
 gulp.task('watch',function(){
-    runsequence('pug','less','js','browsersync',function(e){
+    runsequence('pug','less','js','browsersync','publishchanges',function(e){
        //not yey anything 
+       
     });
     
     //semicolons are not mandatory in java script
@@ -66,8 +75,10 @@ gulp.task('watch',function(){
     gulp.watch('templates/*.pug' ,['pug']);
     gulp.watch('less/*.less' ,['less']);
     gulp.watch('scripts/*.js', ['js']);
-    
+    gulp.watch('build/*.*',['publishchanges']);
 });
+
+
 
 
 
